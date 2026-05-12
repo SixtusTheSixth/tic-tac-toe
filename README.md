@@ -14,6 +14,8 @@ You can train the deep Q-network by running `python DQNPlayer.py` directly, and 
 
 (This project and my Ultimate Tic-Tac-Toe project have the same structure.)
 
+If you're seeing this on my GitHub page and want to play against any of these players easily, there's a demo on my website at [this page](https://aquilifer.net/games/tictactoe/).
+
 <br>
 
 #### TODO:
