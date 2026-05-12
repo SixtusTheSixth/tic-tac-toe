@@ -23,7 +23,6 @@ from MinimaxPlayer import MinimaxPlayer
 from UserPlayer import UserPlayer
 from PerfectPlayer import PerfectPlayer
 from EpsPerfectPlayer import EpsPerfectPlayer
-from game import Board
 from ttt_utility import find_moves, disp, can_win, check_won
 
 class DQN(torch.nn.Module):
@@ -87,6 +86,9 @@ class DQNPlayer(BasePlayer):
     def train_loop(self): 
         num_episodes = 150000
         print("Starting training...")
+
+        # import here to avoid circular import with game.py
+        from game import Board
 
         num_lost_from_invalid = 0 # tracking how many games during training we lost by playing invalid moves (if not self.only_valid)
         self.training_mode = True # turn on epsilon-greedy
@@ -258,6 +260,9 @@ def main():
     new_weights_path = os.path.join("weights", "ttt_rl_cur_1.pt") # change if trying something new
 
     # print(os.path.exists(weights_path)) # debugging
+    # import here to avoid circular import when this module is imported by game.py
+    from game import Board
+
     dq_player = DQNPlayer(mode='eps-perfect', only_valid=False, weights_path=weights_path) \
         if os.path.exists(weights_path) else DQNPlayer(mode='eps-perfect', only_valid=False)
     # dq_player = DQNPlayer() # plays against a random player, not limited to valid moves - can run many more episodes (like, 50K)

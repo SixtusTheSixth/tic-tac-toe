@@ -17,7 +17,7 @@ class MinimaxPlayer(BasePlayer):
         # return the number of empty squares
         return board.count(' ')
 
-    def mmx_ab(self, board, cur_player, lowerBound = -9, upperBound = 9):
+    def mmx_ab(self, board, cur_player, lowerBound = -11, upperBound = 11):
         # get negamax + alpha/beta pruning next move given a previous move and the board and mini states
         # cur_player = 1 if x and 2 if o
         # Returns a tuple (score, move_sequence), where move_sequence is a list (in reverse order) of moves
